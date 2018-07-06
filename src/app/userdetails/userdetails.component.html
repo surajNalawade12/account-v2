@@ -1,0 +1,54 @@
+<div class="topnav">
+  <a (click)="navigateAccount()">
+    <span class="glyphicon glyphicon-home"></span> Home
+  </a>
+  <a (click)="navigateAdd()">Add new</a>
+  <div class="topnav-right">
+    <a>
+      <span class="glyphicon glyphicon-user active"></span> {{ usernm }}</a>
+      <a (click)="navigateallUsers()">Users</a>
+    <a (click)="Logout()">
+      <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+  </div>
+</div>
+
+<div style="width:25%;margin-top:10%;" class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading"> User details
+    </div>
+    <div class="panel-body mt-3 mb-4">
+      <div class="pb-5">
+        <label for="aNo">Username: </label>
+        <input type="text" [(ngModel)]="nguname" class="form-control" placeholder="Enter username" aria-label="AccNo" aria-describedby="basic-addon1"
+          #username/>
+        <span *ngIf="is_error" style="color:red;" class="help-block validation" autofocus>{{ errInfo.username }} </span>
+      </div>
+      <div class="pb-5">
+        <label for="branch">First Name: </label>
+        <input type="text" [(ngModel)]="ngfname" class="form-control" placeholder="Enter first name" aria-label="branch" aria-describedby="basic-addon1"
+          #fname/>
+      </div>
+      <div class="pb-5">
+        <label for="aType">Last Name: </label>
+        <input type="text" [(ngModel)]="nglname" class="form-control" placeholder="Enter last name" aria-label="accType" aria-describedby="basic-addon1"
+          #lname/>
+      </div>
+
+      <div class="pb-5">
+        <label for="aType">Email: </label>
+        <input type="text" [(ngModel)]="ngemail" class="form-control" placeholder="Enter email address" aria-label="accType" aria-describedby="basic-addon1"
+          #email/>
+        <span *ngIf="is_error " style="color:red;" class="help-block validation" autofocus>{{ errInfo.email }} </span>
+      </div>
+
+      <div>
+        <button mat-flat-button class="add mt-4" (click)="saveData(username.value, fname.value, lname.value, email.value);">submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom " role="navigation">
+  <div class="container">
+    <div class="row text-center" style="font-family: cursive;"> © 2018. Made with Amazatic Solutions by Suraj</div>
+  </div>
+</nav>

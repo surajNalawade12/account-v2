@@ -1,0 +1,111 @@
+<div class="topnav">
+    <a class="active" (click)="navigateAccount()">
+        <span class="glyphicon glyphicon-home"></span> Home
+    </a>
+    <a (click)="navigateAdd()">Add new</a>
+    <div class="topnav-right">
+        <a>
+            <span class="glyphicon glyphicon-user"></span> {{ username }}</a>
+        <a (click)="navigateallUsers()">Users</a>
+        <a (click)="Logout()">
+            <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+    </div>
+</div>
+
+<!-- search -->
+
+<div class="container pt-5 pb-5">
+    <div class="row justify-content-center">
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 labelstyle">
+            <div class="input-group">
+                <input type="text" class="form-control" [(ngModel)]="ngsrch" placeholder="Search by account number, branch or account type"
+                    aria-label="Recipient's username" aria-describedby="basic-addon2" #searchName/>
+                <div class="input-group-append ">
+                    <button type="submit" class="btn btn-primary mr-4" (click)='getSearchData(searchName.value);'>
+                        <span class="glyphicon glyphicon-search"></span> Search
+                    </button>
+                    <button type="submit" class="btn btn-primary btnclear" (click)='clearSearch();'>
+                        Clear
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container frame">
+    <div class="panel panel-primary">
+        <div class="panel-heading"> All account details
+        </div>
+        <div class="panel-body mt-5">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <caption>List of account</caption>
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Account No</th>
+                            <th>branch</th>
+                            <th>Account Type</th>
+                            <th>Gender</th>
+                            <th>Edit </th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let account of data | orderBy: accountType | filter:filter | paginate: {itemsPerPage: 5, currentPage: p } ; let i = index ">
+                            <td class="setcolwidth" scope="row">{{ i + 1 }}</td>
+                            <td>{{ account.accountNo }}</td>
+                            <td>{{ account.branch }}</td>
+                            <td>{{ account.accountType }}</td>
+                            <td>{{ account.gender }}</td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm" (click)="upadte_data(account.id, account.accountNo, account.branch, account.accountType, 
+                                        account.gender);">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm" (click)="staticModal.show();setDeleteId(account.id);">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <div class="container">
+        <div class="row text-center" style="font-family: cursive;"> © 2018. Made with Amazatic Solutions by Suraj</div>
+    </div>
+</nav>
+<!-- //getdata-->
+
+<!-- delete confirm message  -->
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Delete</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" style="width: 30%;" (click)="staticModal.hide();"> Cancel</button>
+                <button type="button" class="btn btn-danger" style="width: 30%;margin-left: 30%;" (click)="deleteData();staticModal.hide();">
+                    Yes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="topnav">
+  <a class="active" href="/login">
+    <span class="glyphicon glyphicon-home"></span> Home</a>
+  <a href="/login">Contact</a>
+  <div class="topnav-right">
+    <a href="/login">About</a>
+    <a href="">Sign up</a>
+  </div>
+</div>
+
+<div class="container-fluid ">
+  <div class="row justify-content-center">
+    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 border ">
+      <h3>Login form</h3>
+
+      <!-- using angular material- start -->
+      <div>
+        <span *ngIf="is_error" style="color:red;" class="help-block validation" autofocus>{{ errInfo.non_field_errors }} </span>
+        <br>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Enter user name" #Uname>
+        </mat-form-field>
+        <br>
+      </div>
+
+      <div>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" #pass>
+        </mat-form-field>
+        <span *ngIf="is_error" style="color:red;" class="help-block validation" autofocus>{{ errInfo.password }} </span>
+      </div>
+
+      <div class="labelstyle">
+        <button mat-flat-button title="click for login" (click)='sendUserCredentials(Uname.value, pass.value);'>submit</button>
+      </div>
+
+      <br>
+      <br>
+      <div>
+        <a href="#">Create account</a>
+      </div>
+
+      <!-- using angular material- end -->
+
+
+      <!-- using bootstrap- start -->
+      <!-- <div class="labelstyle">
+        <span *ngIf="is_error" style="color:red;" class="help-block validation" autofocus>{{ errInfo.non_field_errors }} </span>
+        <br>
+        <label for="UserName">User Name</label>
+        <input type="text" class="form-control" placeholder="Enter user name" aria-label="username" aria-describedby="basic-addon1"
+          #Uname/>
+        <!- <span *ngIf="is_error" style="color:red;" class="help-block validation" autofocus>{{ errInfo.password }} </span> 
+      </div>
+
+      <div class="labelstyle">
+        <label for="Password">Password</label>
+        <input type="password" class="form-control" placeholder="Enter Password" aria-label="password" aria-describedby="basic-addon1"
+          #pass/>
+        <span *ngIf="is_error" style="color:red;" class="help-block validation" autofocus>{{ errInfo.password }} </span>
+      </div> 
+
+      <div class="labelstyle">
+        <input class="btn btn-primary add" type="submit" (click)='sendUserCredentials(Uname.value, pass.value);' />
+      </div>- -->
+      <!-- using bootstrap- end -->
+
+
+
+      <br>
+      <br>
+    </div>
+  </div>
+  <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <div class="container">
+        © 2018. Made with Amazatic Solutions by Suraj
+    </div>
+  </nav>
+</div>

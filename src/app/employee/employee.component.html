@@ -1,0 +1,15 @@
+<div style="text-align: center">
+  <button (click)= getEmployeeData()>Get Employee</button>
+  <table>
+    <tr>
+        <th>Id</th>
+        <th>name</th>
+        <th>account</th>
+    </tr>
+    <tr *ngFor="let emp of data" style="margin-bottom: 10px;">
+        <td>{{emp.id}}</td>
+        <td>{{emp.name}}</td>
+        <td>{{emp.account}}</td>
+    </tr>
+</table>
+</div>

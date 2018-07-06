@@ -1,0 +1,91 @@
+<div class="topnav">
+  <a class="active" href="">
+    <span class="glyphicon glyphicon-home"></span> Home</a>
+  <a href="">Contact</a>
+  <div class="topnav-right">
+    <a href="/login">
+      <span class="glyphicon glyphicon-log-in"></span> Sign in</a>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 border">
+      <div>
+        <h3>Registration form</h3>
+      </div>
+
+      <!-- using material strat -->
+      <div>
+        <span *ngIf="is_error" style="color:red;" class="help-block validation" autofocus>{{ errInfo.non_field_errors }} </span>
+        <br>
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="Enter user name" #Uname></textarea>
+        </mat-form-field>
+        <span *ngIf="is_error" style="color:red;" class="help-block validation" autofocus>{{ errInfo.username }} </span>
+      </div>
+      <div>
+        <br>
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="Enter email address" #email></textarea>
+        </mat-form-field>
+        <span *ngIf="is_error" style="color:red;" class="help-block validation" autofocus>{{ errInfo.email }} </span>
+      </div>
+      <div>
+        <br>
+        <mat-form-field class="example-full-width">
+          <textarea matInput [type]="hide ? 'password' : 'text'" placeholder="Enter password" #pass></textarea>
+        </mat-form-field>
+        <span *ngIf="is_error" style="color:red;" class="help-block validation" autofocus>{{ errInfo.password }} </span>
+      </div>
+      <div>
+        <button mat-flat-button title="save the details" (click)='sendUserCredentials(Uname.value, email.value, pass.value);'>submit</button>
+      </div>
+      <br>
+      <br>
+      <div>
+        <a href="/login">Sign in instead</a>
+      </div>
+
+      <!-- using material end -->
+
+      <!-- using bootstrap strat -->
+      <!-- <div class="labelstyle">
+          <!- <span *ngIf="is_error" style="color:red;" class="help-block validation" autofocus>{{ errInfo.non_field_errors }} </span> 
+          <br>
+          <label for="UserName">User name</label>
+          <input type="text" class="form-control" placeholder="Enter user name" aria-label="username" aria-describedby="basic-addon1"
+            #Uname/>
+          <span *ngIf="is_error" style="color:red;" class="help-block validation" autofocus>{{ errInfo.username }} </span>
+        </div>
+        <div class="labelstyle">
+          <br>
+          <label for="email">Email address</label>
+          <input type="text" class="form-control" placeholder="Enter email address" aria-label="email" aria-describedby="basic-addon1"
+            #email/>
+          <!- <span *ngIf="is_error" style="color:red;" class="help-block validation" autofocus>{{ errInfo.email }} </span> 
+        </div>
+        <div class="labelstyle">
+          <br>
+          <label for="Password">Password</label>
+          <input type="password" class="form-control" placeholder="Enter password" aria-label="password" aria-describedby="basic-addon1"
+            #pass/>
+          <span *ngIf="is_error" style="color:red;" class="help-block validation" autofocus>{{ errInfo.password }} </span>
+        </div>
+        <div class="labelstyle">
+            <input class="btn btn-primary add" type="submit" title="save the details" (click)='sendUserCredentials(Uname.value, email.value, pass.value);'
+          />
+          </div>
+        <!- using bootstrap end -->
+
+      <br>
+      <br>
+    </div>
+  </div>
+  <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+      <div class="container">
+          © 2018. Made with Amazatic Solutions by Suraj
+      </div>
+    </nav>
+  
+</div>

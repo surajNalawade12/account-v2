@@ -1,0 +1,64 @@
+<div class="topnav">
+  <a (click)="navigateAccount()">
+    <span class="glyphicon glyphicon-home"></span> Home
+  </a>
+  <a class="active" (click)="navigateAdd()">Add new</a>
+  <div class="topnav-right">
+    <a>
+      <span class="glyphicon glyphicon-user"></span> {{ username }}</a>
+    <a (click)="navigateallUsers()">Users</a>
+
+    <a (click)="Logout()">
+      <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+  </div>
+</div>
+
+<div style="width:40%;margin-top:10%;" class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading"> Add new account
+    </div>
+    <div class="panel-body mt-3 mb-4">
+      <div class="pb-5">
+        <label for="aNo">Account Number: </label>
+        <input type="text" [(ngModel)]="ngacno" class="form-control" placeholder="Enter Account Number" aria-label="AccNo" aria-describedby="basic-addon1"
+          #aNo/>
+        <span *ngIf="is_error" style="color:red;" class="help-block validation" autofocus>{{ errInfo.accountNo }} </span>
+      </div>
+      <div class="pb-5">
+        <label for="branch">Branch Name: </label>
+        <input type="text" [(ngModel)]="ngbn" class="form-control" placeholder="Enter bank branch" aria-label="branch" aria-describedby="basic-addon1"
+          #branch/>
+        <span *ngIf="is_error" style="color:red;" class="help-block validation" autofocus>{{ errInfo.branch }} </span>
+      </div>
+      <div class="pb-5">
+        <label for="aType">Account Type: </label>
+        <input type="text" [(ngModel)]="ngat" class="form-control" placeholder="Enter Account Type" aria-label="accType" aria-describedby="basic-addon1"
+          #aType/>
+        <span *ngIf="is_error " style="color:red;" class="help-block validation" autofocus>{{ errInfo.accountType }} </span>
+      </div>
+      <div class="pb-3">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" (click)="setradio('M')" id="inlineRadio1" value="M"
+            [(ngModel)]="ngmale">
+          <label class="form-check-label" for="inlineRadio1">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" (click)="setradio('F')" id="inlineRadio2" value="F"
+            [(ngModel)]="ngfemale">
+          <label class="form-check-label" for="inlineRadio2">Female</label>
+          
+        </div>
+        <span *ngIf="is_error" style="color:red;" class="help-block validation" autofocus>{{ errInfo.gender }} </span>
+      </div>
+      <div class="text-center mt-4">
+        <!-- <input class="btn btn-primary add" type="submit" (click)="saveData(aNo.value, branch.value, aType.value);" /> using bootstrap-->
+        <button mat-flat-button (click)="saveData(aNo.value, branch.value, aType.value);">submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <div class="container">
+    <div class="row text-center" style="font-family: cursive;"> © 2018. Made with Amazatic Solutions by Suraj</div>
+  </div>
+</nav>
